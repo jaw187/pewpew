@@ -1,0 +1,30 @@
+{
+  "name": "pewpew",
+  "version": "0.0.0",
+  "description": "Script for sending many parallel requests at a resource",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaw187/pewpew.git"
+  },
+  "keywords": [
+    "pew",
+    "pewpew",
+    "denial",
+    "of",
+    "service"
+  ],
+  "author": "James Weston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaw187/pewpew/issues"
+  },
+  "homepage": "https://github.com/jaw187/pewpew#readme",
+  "dependencies": {
+    "insync": "2.x.x",
+    "wreck": "7.x.x"
+  }
+}
