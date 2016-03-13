@@ -26,15 +26,27 @@ internals.main = function () {
             abbr: 'l',
             help: 'Limit of how many parallel requests to make',
             default: 10
+        },
+        wreckOptions: {
+            abbr: 'o',
+            help: 'Path to JSON file with Wreck request options',
+            type: 'string'
         }
     }).parse();
 
     const url = args.url;
+    try {
+        const options = args.wreckOptions ? JSON.parse(Fs.readFileSync(args.wreckOptions)) : {};
+    }
+    catch (e) {
+        throw e;
+    }
+
     let counter = 0;
 
     const get = function (i, next) {
 
-        Wreck.get(url, function (err, res, result) {
+        Wreck.get(url, options, function (err, res, result) {
 
             ++counter;
             console.log(counter)
