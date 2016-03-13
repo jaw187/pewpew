@@ -27,5 +27,8 @@
     "insync": "2.x.x",
     "nomnom": "1.8.x",
     "wreck": "7.x.x"
+  },
+  "bin": {
+    "pewpew": "./bin/pewpew"
   }
 }
