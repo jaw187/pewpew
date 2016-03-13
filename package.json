@@ -25,6 +25,7 @@
   "homepage": "https://github.com/jaw187/pewpew#readme",
   "dependencies": {
     "insync": "2.x.x",
+    "nomnom": "1.8.x",
     "wreck": "7.x.x"
   }
 }

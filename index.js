@@ -1,20 +1,35 @@
 'use strict';
 
 const Insync = require('insync');
+const Nomnom = require('nomnom');
 const Wreck = require('wreck');
 
 
 const internals = {};
 
 
-internals.url = 'http://google.com';
-internals.max = 1000;
-internals.limit = 10;
-
-
 internals.main = function () {
 
-    const url = internals.url;
+    const args = Nomnom.options({
+        url: {
+            position: 0,
+            help: 'URL to send requests to',
+            required: true,
+            type: 'string'
+        },
+        max: {
+            abbr: 'm',
+            help: 'Maximum number of requests to send',
+            default: 1000
+        },
+        limit: {
+            abbr: 'l',
+            help: 'Limit of how many parallel requests to make',
+            default: 10
+        }
+    }).parse();
+
+    const url = args.url;
     let counter = 0;
 
     const get = function (i, next) {
@@ -37,13 +52,13 @@ internals.main = function () {
     };
 
     const queue =[];
-    const il = internals.max;
+    const il = args.max;
 
     for (let i = 0; i < il; ++i) {
         queue.push(i);
     }
 
-    Insync.mapLimit(queue, internals.limit, get, function (err) {
+    Insync.mapLimit(queue, args.limit, get, function (err) {
 
         console.log('Sent ' + counter + ' requests');
         if (err) {
