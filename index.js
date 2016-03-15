@@ -35,8 +35,9 @@ internals.main = function () {
     }).parse();
 
     const url = args.url;
+    let options = {}
     try {
-        const options = args.wreckOptions ? JSON.parse(Fs.readFileSync(args.wreckOptions)) : {};
+        options = args.wreckOptions ? JSON.parse(Fs.readFileSync(args.wreckOptions)) : options;
     }
     catch (e) {
         throw e;
